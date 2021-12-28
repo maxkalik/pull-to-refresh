@@ -20,6 +20,11 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct PullToRefreshView: View {
+    
+    @State var arrayOfData: [String] = [String](repeating: "List item", count: 7)
+        .enumerated()
+        .map { "\($1) \($0)" }
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -31,19 +36,33 @@ struct PullToRefreshView: View {
             }
             .padding()
             .background(Color.orange.ignoresSafeArea(.all, edges: .top))
+
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    ForEach(arrayOfData, id: \.self) { value in
+                        HStack {
+                            Text(value)
+                            Spacer()
+                        }
+                        .padding()
+                    }
+                }
+                .background(Color.white)
+            }
+            .pullToRefreshable {
+                arrayOfData.append("Added Item List \(arrayOfData.count)")
+            }
             
-            ListView()
         }
         .background(Color.black.opacity(0.06).ignoresSafeArea())
         
     }
 }
 
-struct ListView: View {
-    @State var arrayOfData: [String] = [String](repeating: "List item", count: 7)
-        .enumerated()
-        .map { "\($1) \($0)" }
-    
+fileprivate var PULL_HEIGHT: CGFloat = 60
+
+struct Refreshable: ViewModifier {
+
     @State var offsetY: CGFloat = -10
     @State var startOffset: CGFloat = 0
     @State var offset: CGFloat = 0
@@ -52,7 +71,13 @@ struct ListView: View {
     @State var isReleased: Bool = false
     @State var isIgnored: Bool = false
     
-    var body: some View {
+    var action: () -> Void
+    
+    init(_ action: @escaping () -> Void) {
+        self.action = action
+    }
+    
+    func body(content: Content) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             GeometryReader { reader -> AnyView in
 
@@ -62,15 +87,15 @@ struct ListView: View {
                     }
                     offset = reader.frame(in: .global).minY
                     
-                    if offset - startOffset > 60 {
-                        updateOffset(CGFloat(offset - startOffset) - 60 - 10)
+                    if offset - startOffset > PULL_HEIGHT {
+                        updateOffset(CGFloat(offset - startOffset) - PULL_HEIGHT)
                     }
                     
-                    if offset - startOffset > 60 && !isStarted && !isReleased {
+                    if offset - startOffset > PULL_HEIGHT && !isStarted && !isReleased {
                         isStarted = true
                     }
                     
-                    if offsetY == 65 && isStarted && !isReleased {
+                    if offsetY == PULL_HEIGHT && isStarted && !isReleased {
                         isReleased = true
                         updateData()
                     }
@@ -91,20 +116,9 @@ struct ListView: View {
             .frame(width: 0, height: 0)
             
             ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
-                Rectangle()
-                    .frame(width: 40, height: 40)
-                    .offset(y: -55)
-                
-                VStack {
-                    ForEach(arrayOfData, id: \.self) { value in
-                        HStack {
-                            Text(value)
-                            Spacer()
-                        }
-                        .padding()
-                    }
-                }
-                .background(Color.white)
+                LoadingIndicator()
+                    .offset(y: -(offset / 2 - 20))
+                content
             }
             .offset(y: offsetY)
         }
@@ -112,8 +126,8 @@ struct ListView: View {
     
     func updateOffset(_ value: CGFloat) {
         DispatchQueue.main.async {
-            if value > 64 {
-                self.offsetY = 65
+            if value > PULL_HEIGHT - 1 {
+                self.offsetY = PULL_HEIGHT
             } else {
                 if isStarted && !isReleased {
                     self.offsetY = value
@@ -126,7 +140,7 @@ struct ListView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             withAnimation(.linear) {
                 if offset == startOffset {
-                    arrayOfData.append("Added Item List \(arrayOfData.count)")
+                    action()
                     isStarted = false
                     isReleased = false
                     offsetY = -10
@@ -135,5 +149,11 @@ struct ListView: View {
                 }
             }
         }
+    }
+}
+
+extension ScrollView {
+    func pullToRefreshable(_ action: @escaping () -> Void) -> some View {
+        modifier(Refreshable(action))
     }
 }

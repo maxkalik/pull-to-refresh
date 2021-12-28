@@ -14,6 +14,7 @@
 		1192188E277A29180024B51E /* PullToRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192188D277A29180024B51E /* PullToRefreshTests.swift */; };
 		11921898277A29180024B51E /* PullToRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11921897277A29180024B51E /* PullToRefreshUITests.swift */; };
 		1192189A277A29180024B51E /* PullToRefreshUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11921899277A29180024B51E /* PullToRefreshUITestsLaunchTests.swift */; };
+		372CF968277B0D23007BDAE2 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372CF967277B0D23007BDAE2 /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		11921893277A29180024B51E /* PullToRefreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PullToRefreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11921897277A29180024B51E /* PullToRefreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshUITests.swift; sourceTree = "<group>"; };
 		11921899277A29180024B51E /* PullToRefreshUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		372CF967277B0D23007BDAE2 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				1192187C277A29170024B51E /* PullToRefreshApp.swift */,
 				1192187E277A29170024B51E /* ContentView.swift */,
+				372CF967277B0D23007BDAE2 /* LoadingIndicator.swift */,
 				11921880277A29180024B51E /* Assets.xcassets */,
 				11921882277A29180024B51E /* Preview Content */,
 			);
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372CF968277B0D23007BDAE2 /* LoadingIndicator.swift in Sources */,
 				1192187F277A29170024B51E /* ContentView.swift in Sources */,
 				1192187D277A29170024B51E /* PullToRefreshApp.swift in Sources */,
 			);
