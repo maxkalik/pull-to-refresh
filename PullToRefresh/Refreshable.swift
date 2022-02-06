@@ -100,8 +100,3 @@ struct Refreshable: ViewModifier {
     }
 }
 
-extension ScrollView {
-    func pullToRefreshable(_ action: @escaping () -> Void) -> some View {
-        modifier(Refreshable(action))
-    }
-}
