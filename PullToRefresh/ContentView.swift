@@ -21,21 +21,21 @@ struct ContentView_Previews: PreviewProvider {
 
 struct PullToRefreshView: View {
     
-    @State var arrayOfData: [String] = [String](repeating: "List item", count: 7)
+    @State var arrayOfData: [String] = [String](repeating: "List item number: ", count: 7)
         .enumerated()
         .map { "\($1) \($0)" }
     
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Title")
+                Text("Pull to Refresh")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundColor(.black)
                 Spacer()
             }
             .padding()
-            .background(Color.orange.ignoresSafeArea(.all, edges: .top))
+            .background(Color.yellow.ignoresSafeArea(.all, edges: .top))
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
@@ -50,7 +50,7 @@ struct PullToRefreshView: View {
                 .background(Color.white)
             }
             .pullToRefreshable {
-                arrayOfData.append("Added Item List \(arrayOfData.count)")
+                arrayOfData.append("Added List Item \(arrayOfData.count)")
             }
             
         }
