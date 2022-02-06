@@ -21,9 +21,9 @@ struct ContentView_Previews: PreviewProvider {
 
 struct PullToRefreshView: View {
     
-    @State var arrayOfData: [String] = [String](repeating: "List item number: ", count: 7)
+    @State var arrayOfData: [String] = [String](repeating: "Item: ", count: 5)
         .enumerated()
-        .map { "\($1) \($0)" }
+        .map { "\($1) \($0 + 1)" }
     
     var body: some View {
         VStack(spacing: 0) {
