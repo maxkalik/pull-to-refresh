@@ -52,6 +52,7 @@ struct PullToRefreshView: View {
             .pullToRefreshable {
                 arrayOfData.append("Added List Item \(arrayOfData.count)")
             }
+            .padding(20)
             
         }
         .background(Color.black.opacity(0.06).ignoresSafeArea())
