@@ -23,7 +23,7 @@ struct PullToRefreshView: View {
                 Spacer()
             }
             .padding()
-            .background(Color.black.ignoresSafeArea(.all, edges: .top))
+            .background(Color.red.ignoresSafeArea(.all, edges: .top))
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
@@ -36,11 +36,12 @@ struct PullToRefreshView: View {
                     }
                 }
                 .background(Color.white)
+                .cornerRadius(10)
+                .padding(20)
             }
             .pullToRefreshable {
                 arrayOfData.append("Added List Item \(arrayOfData.count)")
             }
-            .padding(20)
             
         }
         .background(Color.black.opacity(0.06).ignoresSafeArea())   
