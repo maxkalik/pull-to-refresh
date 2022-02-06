@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112DB41D27AFBC19004F8DE5 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112DB41C27AFBC19004F8DE5 /* PullToRefreshView.swift */; };
+		112DB41F27AFBC42004F8DE5 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112DB41E27AFBC42004F8DE5 /* Refreshable.swift */; };
 		1192187D277A29170024B51E /* PullToRefreshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192187C277A29170024B51E /* PullToRefreshApp.swift */; };
 		1192187F277A29170024B51E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192187E277A29170024B51E /* ContentView.swift */; };
 		11921881277A29180024B51E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11921880277A29180024B51E /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		112DB41C27AFBC19004F8DE5 /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		112DB41E27AFBC42004F8DE5 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		11921879277A29170024B51E /* PullToRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullToRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1192187C277A29170024B51E /* PullToRefreshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshApp.swift; sourceTree = "<group>"; };
 		1192187E277A29170024B51E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				1192187C277A29170024B51E /* PullToRefreshApp.swift */,
 				1192187E277A29170024B51E /* ContentView.swift */,
+				112DB41C27AFBC19004F8DE5 /* PullToRefreshView.swift */,
+				112DB41E27AFBC42004F8DE5 /* Refreshable.swift */,
 				372CF967277B0D23007BDAE2 /* LoadingIndicator.swift */,
 				11921880277A29180024B51E /* Assets.xcassets */,
 				11921882277A29180024B51E /* Preview Content */,
@@ -260,6 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				112DB41F27AFBC42004F8DE5 /* Refreshable.swift in Sources */,
+				112DB41D27AFBC19004F8DE5 /* PullToRefreshView.swift in Sources */,
 				372CF968277B0D23007BDAE2 /* LoadingIndicator.swift in Sources */,
 				1192187F277A29170024B51E /* ContentView.swift in Sources */,
 				1192187D277A29170024B51E /* PullToRefreshApp.swift in Sources */,
