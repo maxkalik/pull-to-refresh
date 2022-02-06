@@ -7,9 +7,9 @@ public enum ActivityIndicatorColor {
     case white
 }
 
-private let delay: Double = 0.2
-private let duration: Double = 0.5
-private let circlesCount = 3
+fileprivate let delay: Double = 0.2
+fileprivate let duration: Double = 0.5
+fileprivate let circlesCount = 3
 
 struct LoadingIndicator: View {
 
