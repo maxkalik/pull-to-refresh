@@ -31,11 +31,11 @@ struct PullToRefreshView: View {
                 Text("Pull to Refresh")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                 Spacer()
             }
             .padding()
-            .background(Color.yellow.ignoresSafeArea(.all, edges: .top))
+            .background(Color.black.ignoresSafeArea(.all, edges: .top))
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
