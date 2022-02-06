@@ -23,7 +23,7 @@ struct PullToRefreshView: View {
                 Spacer()
             }
             .padding()
-            .background(Color.black.ignoresSafeArea(.all, edges: .top))
+            .background(Color.red.ignoresSafeArea(.all, edges: .top))
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
