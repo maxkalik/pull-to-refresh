@@ -13,12 +13,15 @@ fileprivate let circlesCount = 3
 
 struct LoadingIndicator: View {
 
+    @Environment(\.scenePhase) var scenePhase
     @State var style: ActivityIndicatorColor = .red
     @State private var fades = [Double](repeating: 1, count: circlesCount)
-
+    @State var isAnimationStop: Bool = false
+    
     private var foreverAnimation: Animation {
+        isAnimationStop ? .default :
         .easeInOut(duration: duration / 2)
-        .delay(0.2)
+        .delay(delay)
         .repeatForever(autoreverses: true)
     }
 
@@ -28,23 +31,28 @@ struct LoadingIndicator: View {
                 Circle()
                     .fill(style == .red ? .red : .white)
                     .opacity(fades[i])
-                    .animation(foreverAnimation, value: fades[i])
                     .onAppear { animate(at: i) }
+                    .animation(foreverAnimation, value: fades[i])
             }
         }
         .frame(width: 39, height: 13)
+        .onChange(of: scenePhase) { phase in
+            switch phase {
+            case .active:
+                isAnimationStop = false
+                fades.indices.forEach { i in
+                    animate(at: i)
+                }
+            case .background:
+                isAnimationStop = true
+                fades = [Double](repeating: 1, count: circlesCount)
+            default: return
+            }
+        }
     }
 
     private func animate(at index: Int) {
-
-        if index == 0 {
-            self.fades[0] = 0
-            return
-        }
-
-        DispatchQueue.main.asyncAfter(
-            deadline: .now() + delay * Double(index) + delay
-        ) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay * Double(index) + delay) {
             self.fades[index] = 0
         }
     }
